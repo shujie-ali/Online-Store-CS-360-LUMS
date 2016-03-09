@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: MyString
+  bid: 
+  email: MyString
+  mobile: MyString
+  status: false
+
+two:
+  customer: MyString
+  bid: 
+  email: MyString
+  mobile: MyString
+  status: false

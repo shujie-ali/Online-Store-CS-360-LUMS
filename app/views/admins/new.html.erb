@@ -1,0 +1,8 @@
+<h1>Sign up</h1>
+    <%= form_for(@admin) do |f| %>  
+    First Name: <%= f.text_field :first_name %> <br />
+    Last Name: <%= f.text_field :last_name %> <br />
+    Email: <%= f.text_field :email %> <br />
+    Password: <%= f.password_field :password %> <br />
+    <%= f.submit "Create" %> 
+<% end %>
