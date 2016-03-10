@@ -1,0 +1,42 @@
+<%- model_class = Book -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:coursecode) %></th>
+      <th><%= model_class.human_attribute_name(:instructor) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:semester) %></th>
+      <th><%= model_class.human_attribute_name(:dept) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= link_to book.id, book_path(book) %></td>
+        <td><%= book.name %></td>
+        <td><%= book.coursecode %></td>
+        <td><%= book.instructor %></td>
+        <td><%= book.price %></td>
+        <td><%= book.semester %></td>
+        <td><%= book.dept %></td>
+        <td><%=l book.created_at %></td>
+        <td>
+          <%= link_to t("BUY", :default => "BUY"),
+                      new_order_path(:bid => book), :class => 'btn btn-default btn-xs' %>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_book_path,
+            :class => 'btn btn-primary' %>
