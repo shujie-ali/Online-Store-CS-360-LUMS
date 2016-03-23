@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @request.author %>
+</p>
+
+<p>
+  <strong>Edition:</strong>
+  <%= @request.edition %>
+</p>
+
+<p>
+  <strong>Booktitle:</strong>
+  <%= @request.bookTitle %>
+</p>
+
+<p>
+  <strong>Instructor:</strong>
+  <%= @request.instructor %>
+</p>
+
+<p>
+  <strong>Coursecode:</strong>
+  <%= @request.courseCode %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

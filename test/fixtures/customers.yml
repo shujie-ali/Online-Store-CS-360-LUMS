@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rollNum: 1
+  name: MyString
+  mobileNum: MyString
+
+two:
+  rollNum: 1
+  name: MyString
+  mobileNum: MyString

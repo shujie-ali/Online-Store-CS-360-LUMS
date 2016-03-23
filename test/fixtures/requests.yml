@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  author: MyString
+  edition: MyString
+  bookTitle: MyString
+  instructor: MyString
+  courseCode: MyString
+
+two:
+  author: MyString
+  edition: MyString
+  bookTitle: MyString
+  instructor: MyString
+  courseCode: MyString

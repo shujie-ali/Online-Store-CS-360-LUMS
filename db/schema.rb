@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323111014) do
+ActiveRecord::Schema.define(version: 20160323114733) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "first_name"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 20160323111014) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.integer  "rollNum"
+    t.string   "name"
+    t.string   "mobileNum"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.text     "bookIDs"
     t.integer  "customerID"
@@ -47,6 +55,33 @@ ActiveRecord::Schema.define(version: 20160323111014) do
     t.text     "quantities"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer  "bookID"
+    t.integer  "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string   "author"
+    t.string   "edition"
+    t.string   "bookTitle"
+    t.string   "instructor"
+    t.string   "courseCode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.integer  "customerID"
+    t.integer  "orderID"
+    t.integer  "bookID"
+    t.integer  "quantity"
+    t.integer  "discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

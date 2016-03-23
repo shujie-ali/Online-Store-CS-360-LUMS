@@ -2,7 +2,13 @@ rails generate scaffold Book courseTitle:string courseCode:string instructor:str
 
 rails generate scaffold Order bookIDs:text customerID:integer status:string dateOrdered:date quantities:text 
 
+rails generate scaffold Customer rollNum:integer name:string mobileNum:string 
 
+rails generate scaffold Sale customerID:integer orderID:integer bookID:integer quantity:integer discount:integer
+
+rails generate scaffold Purchase bookID:integer quantity:integer
+
+rails generate scaffold Request author:string edition:string bookTitle:string instructor:string courseCode:string
 
 
 /* destroy scaffold /

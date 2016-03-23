@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
 
+  resources :requests
+  resources :purchases
+  resources :sales
+  resources :customers
   resources :orders
   resources :books
   root 'home#index'
