@@ -1,17 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  coursecode: MyString
+  courseTitle: MyString
+  courseCode: MyString
   instructor: MyString
-  price: 1
-  semester: MyString
+  school: MyString
+  ourPrice: 1
+  canotechPrice: 1
+  numCopies: 1
+  bookTitle: MyString
+  author: MyString
+  edition: MyString
   dept: MyString
+  comment: MyString
 
 two:
-  name: MyString
-  coursecode: MyString
+  courseTitle: MyString
+  courseCode: MyString
   instructor: MyString
-  price: 1
-  semester: MyString
+  school: MyString
+  ourPrice: 1
+  canotechPrice: 1
+  numCopies: 1
+  bookTitle: MyString
+  author: MyString
+  edition: MyString
   dept: MyString
+  comment: MyString

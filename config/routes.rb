@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   
 
+  resources :orders
+  resources :books
   root 'home#index'
 
 
-  resources :orders
-  resources :books
   resources :home
   
   get 'signup'  => 'admins#new' 

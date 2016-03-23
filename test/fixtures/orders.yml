@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  customer: MyString
-  bid: 
-  email: MyString
-  mobile: MyString
-  status: false
+  bookIDs: MyText
+  customerID: 1
+  status: MyString
+  dateOrdered: 2016-03-23
+  quantities: MyText
 
 two:
-  customer: MyString
-  bid: 
-  email: MyString
-  mobile: MyString
-  status: false
+  bookIDs: MyText
+  customerID: 1
+  status: MyString
+  dateOrdered: 2016-03-23
+  quantities: MyText

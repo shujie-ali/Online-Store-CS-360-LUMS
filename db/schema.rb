@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309212135) do
+ActiveRecord::Schema.define(version: 20160323111014) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "first_name"
@@ -23,24 +23,30 @@ ActiveRecord::Schema.define(version: 20160309212135) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.string   "name"
-    t.string   "coursecode"
+    t.string   "courseTitle"
+    t.string   "courseCode"
     t.string   "instructor"
-    t.integer  "price"
-    t.string   "semester"
+    t.string   "school"
+    t.integer  "ourPrice"
+    t.integer  "canotechPrice"
+    t.integer  "numCopies"
+    t.string   "bookTitle"
+    t.string   "author"
+    t.string   "edition"
     t.string   "dept"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "comment"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "customer"
-    t.integer  "bid"
-    t.string   "email"
-    t.string   "mobile"
-    t.boolean  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "bookIDs"
+    t.integer  "customerID"
+    t.string   "status"
+    t.date     "dateOrdered"
+    t.text     "quantities"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end

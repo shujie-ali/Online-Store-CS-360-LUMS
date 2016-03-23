@@ -1,11 +1,11 @@
 class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
-      t.string :customer
-      t.integer :bid
-      t.string :email
-      t.string :mobile
-      t.boolean :status
+      t.text :bookIDs
+      t.integer :customerID
+      t.string :status
+      t.date :dateOrdered
+      t.text :quantities
 
       t.timestamps null: false
     end

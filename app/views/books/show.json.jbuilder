@@ -1,1 +1,1 @@
-json.extract! @book, :id, :name, :coursecode, :instructor, :price, :semester, :dept, :created_at, :updated_at
+json.extract! @book, :id, :courseTitle, :courseCode, :instructor, :school, :ourPrice, :canotechPrice, :numCopies, :bookTitle, :author, :edition, :dept, :comment, :created_at, :updated_at

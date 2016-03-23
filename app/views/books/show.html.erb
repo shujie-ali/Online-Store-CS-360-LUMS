@@ -4,18 +4,30 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @book.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:coursecode) %>:</strong></dt>
-  <dd><%= @book.coursecode %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:courseTitle) %>:</strong></dt>
+  <dd><%= @book.courseTitle %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:courseCode) %>:</strong></dt>
+  <dd><%= @book.courseCode %></dd>
   <dt><strong><%= model_class.human_attribute_name(:instructor) %>:</strong></dt>
   <dd><%= @book.instructor %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
-  <dd><%= @book.price %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:semester) %>:</strong></dt>
-  <dd><%= @book.semester %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:school) %>:</strong></dt>
+  <dd><%= @book.school %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ourPrice) %>:</strong></dt>
+  <dd><%= @book.ourPrice %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:canotechPrice) %>:</strong></dt>
+  <dd><%= @book.canotechPrice %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:numCopies) %>:</strong></dt>
+  <dd><%= @book.numCopies %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:bookTitle) %>:</strong></dt>
+  <dd><%= @book.bookTitle %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:author) %>:</strong></dt>
+  <dd><%= @book.author %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:edition) %>:</strong></dt>
+  <dd><%= @book.edition %></dd>
   <dt><strong><%= model_class.human_attribute_name(:dept) %>:</strong></dt>
   <dd><%= @book.dept %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>
+  <dd><%= @book.comment %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

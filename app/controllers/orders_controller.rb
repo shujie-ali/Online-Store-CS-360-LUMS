@@ -14,8 +14,6 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @k = params[:bid]
-    flash[:var] = @k
     @order = Order.new
   end
 
@@ -26,10 +24,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @r = flash[:var]
-    
-    
-    @order = Order.new( { "customer" => order_params["customer"], "bid" => @r, "email" => order_params["email"], "mobile"=> order_params["mobile"],"status" => 0})
+    @order = Order.new(order_params)
 
     respond_to do |format|
       if @order.save
@@ -74,6 +69,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:customer, :bid, :email, :mobile, :status)
+      params.require(:order).permit(:bookIDs, :customerID, :status, :dateOrdered, :quantities)
     end
 end

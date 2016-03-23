@@ -1,0 +1,26 @@
+rails generate scaffold Book courseTitle:string courseCode:string instructor:string school:string ourPrice:integer canotechPrice:integer numCopies:integer bookTitle:string author:string edition:string dept:string comment:string
+
+rails generate scaffold Order bookIDs:text customerID:integer status:string dateOrdered:date quantities:text 
+
+
+
+
+/* destroy scaffold /
+
+rails destroy scaffold Order
+
+/* to delete table books */
+
+rails g migration DropProducts
+
+class DropProducts < ActiveRecord::Migration
+  def change
+    drop_table :books
+  end
+end
+
+delete the file after running rake db:migrate
+
+/* to add theme to books */
+
+rails g bootstrap:themed books -f
