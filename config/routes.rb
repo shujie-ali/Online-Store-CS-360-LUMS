@@ -3,12 +3,17 @@ Rails.application.routes.draw do
 
   resources :requests
   resources :purchases
+  get 'sales/report' => 'sales#report'
   resources :sales
   resources :customers
   resources :orders
   resources :books
+  
+  
   root 'home#index'
-
+  
+  get 'login'=> 'sessions#new'
+  
 
   resources :home
   
