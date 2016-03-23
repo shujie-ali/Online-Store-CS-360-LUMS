@@ -1,17 +1,27 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
 
+
+  @selectedRatings = []
   # GET /sales
   # GET /sales.json
   def index
     @sales = Sale.all
   end
 
+
   # GET /sales/1
   # GET /sales/1.json
   def show
   end
-
+  
+  def report
+      @sales = Sale.all
+      @allBooks = []
+      @sales.each do |sale|
+        @allBooks.push(Book.find_by(sale.bookID))
+      end
+  end
   # GET /sales/new
   def new
     @sale = Sale.new
@@ -71,4 +81,5 @@ class SalesController < ApplicationController
     def sale_params
       params.require(:sale).permit(:customerID, :orderID, :bookID, :quantity, :discount)
     end
+
 end
