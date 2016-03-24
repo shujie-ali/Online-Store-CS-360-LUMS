@@ -44,7 +44,7 @@ GEM
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
-    byebug (8.2.1)
+    byebug (8.2.2)
     capybara (2.6.2)
       addressable
       mime-types (>= 1.16)

@@ -1,6 +1,5 @@
 class AdminsController < ApplicationController
   
-    before_action :require_admin
   
     def new
     @admin = Admin.new
