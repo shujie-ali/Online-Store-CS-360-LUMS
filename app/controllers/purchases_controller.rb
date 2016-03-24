@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :set_purchase, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  # before_action :require_admin, only: [:index, :show, :new, :edit, :create, :update, :destroy]
   # GET /purchases
   # GET /purchases.json
   def index

@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:index]
+  # before_action :require_admin, only: [:index]
   # GET /requests
   # GET /requests.json
   def index

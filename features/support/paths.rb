@@ -15,7 +15,15 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
+    when /^Purchase$/
+      '/purchases'
 
+    when /^request$/
+      '/requests'
+    when /^books path$/
+      '/books'
+    when /^new book page$/
+      '/books/new'  
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
