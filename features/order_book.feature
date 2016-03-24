@@ -8,8 +8,8 @@ Background: Admin ready
   Given administrator has signed update
   Given administrator has logged in
 
-Scenario:try to create a new user
-	When I fill in  "Name" ith "Shahroze"
+Scenario: try to create a new user
+	When I fill in  "Name" with "Shahroze"
 	And I fill in "Roll Number" with "16110203"
 	And I fill in "Mobile number" with "03001234567"
 	And I select my book "MECO 121"
