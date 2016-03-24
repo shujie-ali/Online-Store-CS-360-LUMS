@@ -54,5 +54,15 @@ end
 Then /^I delete request "([^"]*)"$/ do |req|
   @request = Request.find_by(author: req)
   assert @request.destroy
+end
 
+Then(/^I should see all of the sales$/) do
+  rows = page.all('#table tr').size - 1
+  Sale.count() > 0
+end
+
+
+Then(/^I should see all of the purchases$/) do
+  rows = page.all('#table tr').size - 1
+  Sale.count() > 0
 end

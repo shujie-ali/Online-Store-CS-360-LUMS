@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
 
   resources :requests
+  get 'purchases/report' => 'purchases#report'
   resources :purchases
   get 'sales/report' => 'sales#report'
   resources :sales
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
   
   
   root 'home#index'
-  
   get 'login'=> 'sessions#new'
   
 
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :admins
   get 'login'=> 'sessions#new'
   post 'login' => 'sessions#create'
+
   delete 'logout' => 'sessions#destroy'
   resources :sessions
   

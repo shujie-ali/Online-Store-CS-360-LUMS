@@ -23,7 +23,17 @@ module NavigationHelpers
     when /^books path$/
       '/books'
     when /^new book page$/
-      '/books/new'  
+      '/books/new'        
+      
+    when /^purchase report$/
+      '/purchases/report'
+    
+    when /^new sales$/
+      '/sales/new'
+   
+    when /^sales report$/
+      '/sales/report'
+      
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
