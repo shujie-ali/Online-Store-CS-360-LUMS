@@ -15,5 +15,4 @@ Scenario:try to create a new user
     #And I fill in "Customer[customerID]" with "1"
 	#And I fill in "Mobile number" with "03001234567"
 	#And I select my book "MECO 121"
-	#And Press "next" 
-	
+	#And Press "next"
