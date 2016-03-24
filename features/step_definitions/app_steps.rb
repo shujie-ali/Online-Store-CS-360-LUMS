@@ -49,5 +49,10 @@ end
 Then /^I should have a book "([^"]*)"$/ do |title|
   assert Book.find_by(bookTitle: title)
 
+end
+
+Then /^I delete request "([^"]*)"$/ do |req|
+  @request = Request.find_by(author: req)
+  assert @request.destroy
 
 end
