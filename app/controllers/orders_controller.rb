@@ -1,4 +1,6 @@
-class OrdersController < ApplicationController
+
+
+  class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   # before_action :require_admin, only: [:index]
   
@@ -16,6 +18,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+   
   end
 
   # GET /orders/1/edit
@@ -25,17 +28,25 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+   
+    
+    cusname = params[:name]
+    cusroll = params[:rollno]
+    cusmob = params[:mobnum]
+    Customer.new(cusname => :name , cusroll => :rollNum, cusmob => :mobNum )
+  
+    
+    
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @order.save
+    #     format.html { redirect_to @order, notice: 'Order was successfully created.' }
+    #     format.json { render :show, status: :created, location: @order }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @order.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /orders/1
@@ -65,11 +76,19 @@ class OrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = Order.find(params[:id])
+    cusname = params[:name]
+    cusroll = params[:rollno]
+    cusmob = params[:mobnum]
+    cust =Customer.create({"name" => cusname , "rollNum" => cusroll ,"mobileNum" => cusmob }) .id
+    if (params[:myid] != nil)
+     var = params[:myid]["courseCode"]
+    
+  end
+    getid = Order.create({ "bookIDs" => var ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s }).id
+    
+    @order = Order.find(getid)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:bookIDs, :customerID, :status, :dateOrdered, :quantities)
-    end
+
 end
