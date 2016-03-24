@@ -1,11 +1,11 @@
-Feature: Admin can view Puschase Report.
+Feature: Admin can view Sales Report.
 
 Background: Making sure that admininstrator is logged in
     #Given administrator has signed update
     #Given administrator has logged in
 
 Scenario: Adding new sales
-	When I am on purchase report
+	When I am on sales report
 	When I follow "New"
 	Then I am on new sales
     And I fill in "sale[customerID]" with "1"
@@ -17,5 +17,5 @@ Scenario: Adding new sales
     #Then sale with id "1"
 
 Scenario: Listing all sales
-    When I am on purchase report
-	Then I should see all of the purchases
+    When I am on sales report
+	Then I should see all of the sales
