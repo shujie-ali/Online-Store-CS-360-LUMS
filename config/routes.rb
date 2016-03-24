@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
 
   resources :requests
+  get 'purchases/report' => 'purchases#report'
   resources :purchases
   get 'sales/report' => 'sales#report'
   resources :sales

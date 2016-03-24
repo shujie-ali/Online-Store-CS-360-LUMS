@@ -11,7 +11,13 @@ class PurchasesController < ApplicationController
   # GET /purchases/1.json
   def show
   end
-
+  def report
+      @sales = Sale.all
+      @allBooks = []
+      @sales.each do |sale|
+        @allBooks.push(Book.find_by(sale.bookID))
+      end
+  end
   # GET /purchases/new
   def new
     @purchase = Purchase.new
