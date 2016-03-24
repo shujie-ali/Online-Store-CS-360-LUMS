@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  before_action :require_admin, only: [:new, :edit, :create, :update, :destroy]
   
   # GET /books
   # GET /books.json
