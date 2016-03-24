@@ -16,6 +16,7 @@ module NavigationHelpers
     when /^the home\s?page$/
       '/'
       
+      
     when /^purchase report$/
       '/purchases/report'
     

@@ -11,6 +11,7 @@ Scenario:try to create a new user
     Then I fill in "Password" with "admin"
     And I press "Log in"
     Then I am on the home page
+    
     #Given I am on
     #And I fill in "Customer[customerID]" with "1"
 	#And I fill in "Mobile number" with "03001234567"
