@@ -4,9 +4,9 @@ Feature: Customer can order a book from the main website.
 	So that I can collect it on time 
 	I want to order a book through the book order form by providing the details
 
-Background: Making sure that admininstrator is logged in
-	Given that administrator is logged in
-	And I am on "New Order" page
+Background: Admin ready 
+  Given administrator has signed update
+  Given administrator has logged in
 
 Scenario:try to create a new user
 	When I fill in  "Name" with "Shahroze"
