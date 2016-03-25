@@ -1,4 +1,7 @@
 Feature: Admin can view Sales Report.
+ As a manager
+ So i know how well my business is doing
+ I want to view my sales report
 
 Background: Making sure that admininstrator is logged in
     #Given administrator has signed update
