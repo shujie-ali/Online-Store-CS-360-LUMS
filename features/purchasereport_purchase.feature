@@ -1,4 +1,7 @@
 Feature: Admin can view Puschase Report.
+ As a manager
+ So i know what i have purchased in different time periods
+ I want to view purchase reports
 
 Background: Making sure that admininstrator is logged in
     #Given administrator has signed update
