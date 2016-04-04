@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
   @admin = Admin.find_by_email(params[:session][:email])
   if @admin && @admin.authenticate(params[:session][:password])
     session[:admin_id] = @admin.id
-    redirect_to '/home'
+    redirect_to '/admins'
   else
     flash[:notice] = "Invalid login"
-    redirect_to '/login'
+    redirect_to '/admin'
   end 
   end
 

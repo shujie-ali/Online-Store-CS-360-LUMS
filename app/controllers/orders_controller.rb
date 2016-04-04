@@ -3,7 +3,7 @@
   class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   # before_action :require_admin, only: [:index]
-  
+  skip_before_filter :verify_authenticity_token
   # GET /orders
   # GET /orders.json
   def index
@@ -16,12 +16,12 @@
   # GET /orders/1.json
   
   def tracker
-    tracking_id = params[:tracking]
-    result = Order.find_by(id: tracking_id)
-    if result
-      redirect_to '/index'
+    @order = Order.find_by_id(params[:t_id])
+    if @order == nil
+      flash[:notice] = "Invalid Order ID"
+      redirect_to '/home'
     else
-      redirect_to '/books'
+      render :show
     end
   end
 
