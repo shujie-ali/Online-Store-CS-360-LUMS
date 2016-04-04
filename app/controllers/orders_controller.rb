@@ -10,9 +10,19 @@
     @orders = Order.all
   end
 
+  def show
+  end
   # GET /orders/1
   # GET /orders/1.json
-  def show
+  
+  def tracker
+    tracking_id = params[:tracking]
+    result = Order.find_by(id: tracking_id)
+    if result
+      redirect_to '/index'
+    else
+      redirect_to '/books'
+    end
   end
 
   # GET /orders/new

@@ -4,3 +4,9 @@
 <%= link_to 'Requests', requests_path %><hr>
 <%= link_to 'Sales', sales_path %><hr>
 <%= link_to 'Customers', customers_path %><hr>
+
+
+<form action="/tracker" method="post">
+  Track: <input type="text" name="tracking"><br>
+  <input type="submit" value="Track Order">
+</form>
