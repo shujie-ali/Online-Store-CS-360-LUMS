@@ -1,0 +1,12 @@
+
+        <h1> Welcome to admin's page</h1>
+
+            <li><%= current_admin.email %></li> 
+            <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
+        
+        <%= link_to 'Books', books_path %> <hr>
+        <%= link_to 'Purchases', purchases_path %><hr>
+        <%= link_to 'Orders', orders_path %><hr>
+        <%= link_to 'Requests', requests_path %><hr>
+        <%= link_to 'Sales', sales_path %><hr>
+        <%= link_to 'Customers', customers_path %><hr>
