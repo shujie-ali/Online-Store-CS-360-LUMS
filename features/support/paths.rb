@@ -36,6 +36,9 @@ module NavigationHelpers
     when /^purchase report$/
       '/purchases/report'
     
+    when /^tracking page$/
+      '/tracker'
+    
     when /^new sales$/
       '/sales/new'
    

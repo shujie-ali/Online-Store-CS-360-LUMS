@@ -60,6 +60,13 @@ Then(/^I should see all of the sales$/) do
   Sale.count() > 0
 end
 
+Then /^there is order "([^"]*)"$/ do |t_id|
+  @order =  Order.find_by(customerID: t_id)
+  if @order != nil
+    assert true
+  end
+end
+
 
 Then(/^I should see all of the purchases$/) do
   rows = page.all('#table tr').size - 1
