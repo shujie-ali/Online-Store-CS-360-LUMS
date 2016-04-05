@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'purchases/report' => 'purchases#report'
   resources :purchases
   get 'sales/report' => 'sales#report'
+  get 'sales/return' => 'sales#returnS'
   resources :sales
   resources :customers
   resources :orders
