@@ -4,11 +4,10 @@ Feature: Admin can view Puschase Report.
  I want to view purchase reports
 
 Background: Making sure that admininstrator is logged in
-    #Given administrator has signed update
-    #Given administrator has logged in
+    Given administrator has logged in
 
 Scenario: Adding new sales
-	When I am on purchase report
+	Given I am on purchase report
 	When I follow "New"
 	Then I am on new sales
     And I fill in "sale[customerID]" with "1"

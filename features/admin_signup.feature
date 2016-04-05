@@ -7,7 +7,7 @@ Feature: make admin account
 
 
 Scenario: make admin account
-  Given I am on the home page
+  Given I am on the admin page
   When I follow "Signup"
   Then I fill in "admin[first_name]" with "Admin"
   Then I fill in "admin[last_name]" with "Admin"
