@@ -4,14 +4,11 @@ Feature: Add request
   So I want to place a request
 
 Background: Admin ready 
-  Given administrator has signed up
   Given administrator has logged in
 
 
 Scenario: Add request
-	Given I am on the home page
-	When I follow "Requests"
-	When I am on request
+	Given I am on request
 	When I follow "New Request"
 	And I fill in "request[author]" with "Mary"
 	And I fill in "request[edition]" with "9th"

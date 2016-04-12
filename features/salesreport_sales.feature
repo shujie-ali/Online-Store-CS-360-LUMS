@@ -4,11 +4,10 @@ Feature: Admin can view Sales Report.
  I want to view my sales report
 
 Background: Making sure that admininstrator is logged in
-    #Given administrator has signed update
-    #Given administrator has logged in
+    Given administrator has logged in
 
 Scenario: Adding new sales
-	When I am on sales report
+	Given I am on sales report
 	When I follow "New"
 	Then I am on new sales
     And I fill in "sale[customerID]" with "1"

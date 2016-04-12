@@ -9,7 +9,8 @@ class SalesController < ApplicationController
     @sales = Sale.all
   end
 
-
+def returnS
+end
   # GET /sales/1
   # GET /sales/1.json
   def show

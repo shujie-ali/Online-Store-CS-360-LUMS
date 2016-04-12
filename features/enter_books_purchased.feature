@@ -4,13 +4,10 @@ Feature: I want to edit books thats i have entered inti the system
 	I want to enter books purchased from vendor 
 
 Background: Admin ready 
-  Given administrator has signed up
-  Given administrator has logged in
+  Given the administrator has logged in
 
 Scenario: Add a new book purchased
-	Given I am on the home page
-	When I follow "Purchases"
-	Then I am on Purchase
+	Given I am on Purchase
 	Then I should see "Listing Purchases"
 	When I follow "New Purchase"
 	When I fill in "Bookid" with "12"

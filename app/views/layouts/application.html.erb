@@ -18,7 +18,7 @@
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 					</button> <a class="navbar-brand" href="#">1 Point</a>
 				</div>
-				
+
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					
@@ -28,22 +28,26 @@
 							    <li><%= current_admin.email %></li> 
 							    <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
 							  </ul> 
-							<% else %> 
+						<% else %> 
 							  <ul class="nav navbar-nav"> 
 							    <li><%= link_to "Login", 'login' %></li>
 							    <li><%= link_to "Signup", 'signup' %></li>
 							  </ul> 
-							<% end %>
+						<% end %>
 							
 							
 							<ul class="nav navbar-nav navbar-right">
               					<li><%= link_to 'Books', books_path  %></li> 
-								<li><%= link_to 'Purchases', purchases_path %></li>
+								<li><%= 
+								# link_to 'Purchases', purchases_path 
+								%></li>
 								<li><%= link_to 'Orders', orders_path %></li>
 								<li><%= link_to 'Requests', requests_path %></li>
-								<li><%= link_to 'Sales', sales_path %></li>
+								<li><%= 
+								# link_to 'Sales', sales_path 
+								%></li>
 								<li><%= link_to 'Customers', customers_path %></li>
-            </ul>
+            				</ul>
 						
 						<form class="navbar-form navbar-left" role="search">
 							<div class="form-group">
@@ -53,6 +57,13 @@
 								Search
 							</button>
 						</form>
+						<%= form_tag("/tracker", method: "post", :class => 'navbar-form navbar-left') do %>
+						  <%= 
+						  #label_tag(:t_id, "Track:")
+						  %>
+						  <%= text_field_tag(:t_id) %>
+						  <%= submit_tag("Track", :class => 'btn btn-default') %>
+						<% end %>
 					
 				</div>
 				

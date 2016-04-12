@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'purchases/report' => 'purchases#report'
   resources :purchases
   get 'sales/report' => 'sales#report'
+  get 'sales/return' => 'sales#returnS'
   resources :sales
   resources :customers
   get 'orders/return' => 'orders#returnB'
@@ -20,11 +21,13 @@ Rails.application.routes.draw do
   
   get 'signup'  => 'admins#new' 
   resources :admins
-  get 'login'=> 'sessions#new'
+  get 'admin'=> 'sessions#new'
   post 'login' => 'sessions#create'
 
   delete 'logout' => 'sessions#destroy'
   resources :sessions
+  
+  post 'tracker' => 'orders#tracker'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

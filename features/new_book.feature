@@ -4,11 +4,10 @@ Feature:
 	I want to enter books 
 
 Background: Admin ready 
-  Given administrator has signed up
   Given administrator has logged in
 
 Scenario: Add a new book purchased
-	Then I am on new book page
+	Given I am on new book page
 	Then I fill in "book[courseTitle]" with "cs"
 	Then I fill in "book[courseCode]" with "12"
 	Then I fill in "book[instructor]" with "lums instructor"

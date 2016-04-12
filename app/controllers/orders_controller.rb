@@ -18,15 +18,26 @@ def submit
   format.html { redirect_to books_url, notice: 'Order was successfully destroyed.' }
 end
   
+  skip_before_filter :verify_authenticity_token
   # GET /orders
   # GET /orders.json
   def index
     @orders = Order.all
   end
 
+  def show
+  end
   # GET /orders/1
   # GET /orders/1.json
-  def show
+  
+  def tracker
+    @order = Order.find_by_id(params[:t_id])
+    if @order == nil
+      flash[:notice] = "Invalid Order ID"
+      redirect_to '/home'
+    else
+      render :show
+    end
   end
 
   # GET /orders/new

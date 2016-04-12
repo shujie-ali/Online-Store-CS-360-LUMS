@@ -1,5 +1,9 @@
 class AdminsController < ApplicationController
   
+  before_action :require_admin, only: [:index]
+  
+  def index
+  end
   
     def new
     @admin = Admin.new
@@ -9,7 +13,7 @@ class AdminsController < ApplicationController
   @admin = Admin.new(admin_params) 
   if @admin.save 
     session[:admin_id] = @admin.id 
-    redirect_to '/' 
+    redirect_to '/admins' 
   else 
     redirect_to '/signup' 
    end 
