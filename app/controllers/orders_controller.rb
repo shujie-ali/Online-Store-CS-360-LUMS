@@ -38,25 +38,47 @@
   # POST /orders
   # POST /orders.json
   def create
-   
-    
+    logger.debug(params)
     cusname = params[:name]
     cusroll = params[:rollno]
     cusmob = params[:mobnum]
-    Customer.new(cusname => :name , cusroll => :rollNum, cusmob => :mobNum )
-  
     
-    
+    @customer=Customer.where(:name => cusname, :rollNum => cusroll).first
+    logger.debug('customer is ')
+    logger.debug(@customer)
+    if !@customer
+      logger.debug('creating customer')
+      @customer=Customer.new(:name => cusname, :rollNum => cusroll, :mobNum => cusmob)
+    else
+      logger.debug('customer already in database')
+    end
+    logger.debug("CUSTOMER ISSSSSSSSSSSSSSSSSSS")
+    logger.debug("customer is "+@customer.to_s)
+    @customer.save!
 
-    # respond_to do |format|
-    #   if @order.save
-    #     format.html { redirect_to @order, notice: 'Order was successfully created.' }
-    #     format.json { render :show, status: :created, location: @order }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @order.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    ccode=params[:courseCode]
+    ins=params[:instructor]
+    # getting book id
+    bookid=Book.where(:courseCode => ccode, :instructor => ins).first
+    logger.debug("book is is ********************")
+    logger.debug(bookid)
+
+    # getting customer id
+    cusID=@customer.id
+    @order=Order.new(:bookIDs => bookid, :customerID => cusID, :dateOrdered => DateTime.now,
+      :status => "Pending", :quantities => params[quantities])
+    logger.debug('GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG')
+    logger.debug(params)    
+
+    respond_to do |format|
+      if @order.save
+        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.json { render :show, status: :created, location: @order }
+      else
+        format.html { render :new }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /orders/1
@@ -86,17 +108,17 @@
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-    cusname = params[:name]
-    cusroll = params[:rollno]
-    cusmob = params[:mobnum]
-    cust =Customer.create({"name" => cusname , "rollNum" => cusroll ,"mobileNum" => cusmob }) .id
-    if (params[:myid] != nil)
-     var = params[:myid]["courseCode"]
+  #   cusname = params[:name]
+  #   cusroll = params[:rollno]
+  #   cusmob = params[:mobnum]
+  #   cust =Customer.create({"name" => cusname , "rollNum" => cusroll ,"mobileNum" => cusmob }) .id
+  #   if (params[:myid] != nil)
+  #    var = params[:myid]["courseCode"]
     
-  end
-    getid = Order.create({ "bookIDs" => var ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s }).id
+  # end
+  #   getid = Order.create({ "bookIDs" => var ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s }).id
     
-    @order = Order.find(getid)
+    @order = Order.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
