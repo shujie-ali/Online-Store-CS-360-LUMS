@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :admins
   get 'admin'=> 'sessions#new'
   post 'login' => 'sessions#create'
-
+  post 'orders/create' => 'orders#create'
   delete 'logout' => 'sessions#destroy'
   resources :sessions
   

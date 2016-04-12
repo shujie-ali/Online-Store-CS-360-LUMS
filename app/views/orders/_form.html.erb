@@ -1,41 +1,18 @@
 
-  <div class="col-xs-5" style="margin-left: -1.5%;">
-    <%= form_tag("/orders/create", method: "get") do %>
-      <div class="form-group">
-        <%= label_tag :name, "Name" %>
-        <%= text_field_tag :name, nil, class: "form-control" %>
-      </div>
-      
-      <div class="form-group">
-        <%= label_tag :mobnum, "Mobile Number" %>
-        <%= text_field_tag :mobnum, nil, class: "form-control" %>
-      </div>
-      
-      <div class="form-group">
-        <%= label_tag :rollno, "Roll number" %>
-        <%= text_field_tag :rollno, nil, class: "form-control" %>
-      </div>
+<%= form_for @order do |f| %>
+<p class="ui">Edit Status </p>
 
-      
-      <div class="form-group">  
-        <%= label_tag :bookid, "Course Code" %>
-        <%=  collection_select :course,:courseCode, Book.all, :id, :courseCode, include_blank: true %>
-     
-      </div>
+  
 
-      <div class="form-group">  
-        <%= label_tag :Instructor, "Course Code" %>
-        <%=  collection_select :course,:instructor, Book.all, :id, :instructor, include_blank: true %>
-     
-      </div>
-
-      <div class="form-group">
-        <%= label_tag :quantity, "Quantity" %>
-        <%= text_field_tag :quantities, nil, class: "form-control" %>
-      </div>
-      
-      
-      <%= submit_tag "Submit", class: "btn btn-default" %>
-    <% end %>
+  
+  <div class="field">
+    <%= f.label "Status" %><br>
+    <%= f.select :status ,['Delivered','Pending']%>
   </div>
+  
 
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
