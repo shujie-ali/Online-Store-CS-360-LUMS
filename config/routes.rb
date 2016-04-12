@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'sales/report' => 'sales#report'
   resources :sales
   resources :customers
+  get 'orders/return' => 'orders#returnB'
   resources :orders
   resources :books
   
