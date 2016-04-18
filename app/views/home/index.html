@@ -6,7 +6,7 @@
         <header class="jumbotron hero-spacer">
             <h1>Welcome To One Point</h1>
             <p class="lead">One point is an online book store. One point is a hub for all luminites. We deal in all course packs for all LUMS courses. We also deliever books on orders.</p>
-            <p><a class="btn btn-primary btn-large">Place your order now!</a>
+            <p><a class="btn btn-primary btn-large" href='/orders/new'>Place your order now!</a>
             </p>
         </header>
 
@@ -133,252 +133,61 @@
         </div>
         
            <hr>  
-         <!-- Contact Us Section -->
- <!DOCTYPE html>
-<html >
-  <head>
-    <meta charset="UTF-8">
-    <title>Contact</title>
-  <h2>Contact Us</h2>  
-    
-    <link rel="stylesheet" href="css/reset.css">
+         
+        <!-- Contact Us Section -->
+        
+        <div class="row text-center">
+        <section class="contact-us-section section-padding" id="contact">
+             <div class="container">
+             <!-- Contact Us Section Title -->
+            <h3 class="section-title contact-title text-center">Contact Us</h3>
 
-    
-        <style>
-      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-      *, p {
-  font-size: 14px;
-  font-family: Arial, arial, sans-serif;
-}
+             
+             <div class="col-md-6 col-md-offset-3">
+                 <form action="/" id="contact-form" class="form-horizontal" role="form" method="post">
+                     <div class="form-group">
+                     <label for="name" class="col-lg-2 control-label">Name</label>
+                         <div class="col-lg-10">
+                             <input type="text" class="form-control required" id="form-name" name="form-name" placeholder="Alex" />
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="email" class="col-lg-2 control-label">Email</label>
+                         <div class="col-lg-10">
+                             <input type="email" class="form-control required" id="form-email" name="form-email" placeholder="eg.alex@gmail.com" />
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="tel" class="col-lg-2 control-label">Mobile</label>
+                         <div class="col-lg-10">
+                             <input type="tel" class="form-control" id="form-tel" name="form-tel" placeholder="eg.03xx-xxxxxxx">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="assunto" class="col-lg-2 control-label">Subject</label>
+                         <div class="col-lg-10">
+                           <input type="text" class="form-control required" id="form-subject" name="form-subject" placeholder="Subject" />
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="mensagem" class="col-lg-2 control-label">Text</label>
+                         <div class="col-lg-10">
+                             <textarea class="form-control required" rows="3" id="form-message" name="form-message" placeholder="Message" /></textarea>
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <div class="col-lg-offset-2 col-lg-10">
+                             <button type="submit" class="btn btn-default">Send Message</button>
+                         </div>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </section>
+     </div>
 
-.errorlist p {margin: 5px 0;}
-
-label {font-size: 11px;}
-
-p.fieldwrap {
-  margin: 10px 0;
-}
-
-div.form-wrapper {
-width: 480px;
-margin: 20px auto;
-}
-
-.disp {display:none;}
-
-input[type=text], textarea {
-  width: 468px;
-  min-height: 50px;
-  border: 0;
-  background: #f0f0f0;
-  outline: 1px solid #c8c8c8;
-  padding-left: 12px;
-}
-
-input[type=text]:focus, textarea:focus {
-  border: 0;
-}
-
-textarea {
-  width: 456px;
-  height: 300px;
-  padding: 12px; 
-}
-
-select {
-  -moz-appearance:normal;
-  -webkit-appearance:button;
-  width: 480px;
-  height: 50px;
-  border: 0;
-  outline: 1px solid #c8c8c8;
-  background: #f0f0f0;
-  cursor: pointer;
-  cursor: hand;
-  color: #999999;
-  border-radius: 0;
-  padding-left: 12px;
-}
-
-input[type=submit] {
-  -moz-appearance:button;
-  -webkit-appearance:button;
-  width: 480px;
-  height: 50px;
-  border: 0;
-  outline: 1px solid #2e76ff;
-  background: #3f81ff;
-  cursor: pointer;
-  cursor: hand;
-  color: #fff;
-  border-radius: 0;
-}
-
-input[type=submit]:hover {
-  background: #2e76ff;
-  outline:1px solid #1d6bff;
-}
-
-div.notification {
-  width: 468px;
-  height: 50px;
-  padding-left: 12px;
-  color: white;
-  margin: 0 0 10px 0;
-}
-
-div.notification p {line-height: 50px;}
-
-div.notification.success {
-  background: url('http://www.donedigital.com.au/contact-legendary-suitjamas/iconography-sprite.png') #27a30c;
-  background-position: 0 3px;
-  outline: 1px solid #23930b;
-}
-
-div.notification.error {
-  background: url('http://www.donedigital.com.au/contact-legendary-suitjamas/iconography-sprite.png') #e2432d;
-  outline: 1px solid #df361f;
-  background-position: 0 203px;
-}
-
-input#fm_name, input#fm_email, select#fm_subject {
-  background-image: url('http://www.donedigital.com.au/contact-legendary-suitjamas/iconography-sprite.png');
-}
-
-input#fm_name {background-position: 0 153px;}
-input#fm_email {background-position: 0 353px;}
-select#fm_subject {background-position: 0 301px;}
-
-::-webkit-input-placeholder {
-    color:    #999;
-}
-:-moz-placeholder {
-    color:    #999;
-}
-::-moz-placeholder {
-    color:    #999;
-}
-:-ms-input-placeholder {
-    color:    #999;
-}
-
-
-  select {
-    padding: 16px 0 0 0;
-    text-indent: 15px;
-    outline: 0;
-    margin-left: -20px;
-    width: 500px;
-    background-position: 21px 301px !important;
-  }
-  
-  .ff-only {
-    outline: 1px solid #c8c8c8;
-    overflow: hidden;
-    width: 480px;
-  }
-
-  p {margin:0;}
-
-
-@media only screen and (min-device-width:320px) and (max-device-width:480px) {
-  input[type="text"] {
-    width: 270px;
-  }
-  select, input[type="submit"] {
-    width: 289px !important;
-  }
-
-  textarea {width: 265px;}
-
-  div.errorlist p {font-size: 10px;}
-
-  div.notification {width: 277px;}
-  div.errorlist {width:265px !important;}
-
-  input#fm_name {background-position: -190px 153px;}
-  input#fm_email {background-position: -190px 353px;}
-  select#fm_subject {background-position: -190px 301px;
-}
-}
-
-div.errorlist {
-  width: 456px;
-  min-height: 50px;
-  border: 0;
-  background: #F0F0F0;
-  outline: 1px solid #C8C8C8;
-  padding: 12px;
-  margin-top: -8px;
-  color: #999;
-}
-  
-div.faq {
-  background: #fff48a;
-  outline: 1px solid #fff279;
-  color: #222;
-  padding: 12px 0 12px 12px;
-  height: auto;
-}
-
-div.faq p {line-height: 25px;}
-    </style>
-
-    
-        <script src="js/prefixfree.min.js"></script>
-
-    
-  </head>
-
-  <body>
-
-    <div class="form-wrapper">
-<form class="ddfm" method="post" action="" enctype="multipart/form-data" _lpchecked="1">
-
-<div class="notification success">
-  <p>Success! Your entry has been sent.</p>
-</div> 
-  
-  
-<div class="notification error">
-  <p>Error: Your entry was not sent.</p>  
-</div>   
-  
-<p class="fieldwrap"><label for="fm_name" class="disp"><span class="required">*</span> Name</label><input class="fmtext" type="text" name="fm_name" id="fm_name" value="" placeholder="Name"></p>
-
-<p class="fieldwrap"><label for="fm_email" class="disp"><span class="required">*</span> Email</label><input class="fmtext" type="text" name="fm_email" id="fm_email" value="" placeholder="Email Address"></p>
-
-  <p class="fieldwrap"><label class="disp"><span class="required">*</span> Subject</label><div class="ff-only"><select class="" code="" id="fm_subject" name="fm_subject">
-<option>Choose A Subject&hellip;</option>
-<option>Do you ship to my country?</option>
-<option>How can I pay?</option>
-<option>How will you send me my books?</option>
-<option>Can I find out where my package is?</option>
-<option>How can i know about the progress of my order?</option>
-<option>Can I pay for faster shipping?</option>
-<option>Other</option>
-    </select></div></p>
-<p class="fieldwrap"><label for="fm_message" class="disp"><span class="required">*</span> Message</label>
-<textarea class="fmtextarea" name="fm_message" cols="20" rows="6" id="fm_message" placeholder="Your Message Goes Here&hellip;"></textarea></p>
-
-<p class="fieldwrap"><label></label><span class="fmoptin">
-<input type="checkbox" name="fmoptinyes" id="fmoptinyes" value="Yes, please send me coupons and special offers!" checked="checked"><label for="fmoptinyes" class="fmchecklabel">Yes, please add me to your mailing list to send me coupons and special offers!</label>
-<br></span></p>
-  
-  <p class="fieldwrap"><div class="submit"><input type="submit" name="form_submitted" value="Send Email"></div></p>
-  
-</form>
-</div>
-    
-    
-    
-    
-    
-  </body>
-</html>
-
-
-    <!-- End Of Contact Us Section -->
+        <!-- End Of Contact Us Section -->
+        
         <!-- /.row -->
 
         <hr>
