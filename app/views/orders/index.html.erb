@@ -1,7 +1,17 @@
 <%- model_class = Order -%>
+
+<div class = "err">
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+</div>
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -13,7 +23,7 @@
       <th><%= model_class.human_attribute_name(:quantities) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
+    </t>
   </thead>
   <tbody>
     <% @orders.each do |order| %>
@@ -28,11 +38,7 @@
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_order_path(order), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      order_path(order),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+
         </td>
       </tr>
     <% end %>

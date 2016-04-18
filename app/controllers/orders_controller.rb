@@ -25,19 +25,9 @@ end
     @orders = Order.all
   end
 
-  def show
-  end
   # GET /orders/1
   # GET /orders/1.json
-  
-  def tracker
-    @order = Order.find_by_id(params[:t_id])
-    if @order == nil
-      flash[:notice] = "Invalid Order ID"
-      redirect_to '/home'
-    else
-      render :show
-    end
+  def show
   end
 
   # GET /orders/new
@@ -58,9 +48,29 @@ end
     cusname = params[:name]
     cusroll = params[:rollno]
     cusmob = params[:mobnum]
-    Customer.new(cusname => :name , cusroll => :rollNum, cusmob => :mobNum )
-  
-    
+    b = 0;
+    if (cusname != "" && cusroll != "" && cusmob != "")
+    if (Customer.find_by_rollNum(cusroll).nil?)
+      cust = Customer.create({"name" => cusname , "rollNum" => cusroll ,"mobileNum" => cusmob }) .id
+    else 
+      cust = Customer.find_by_rollNum(cusroll)[:id]
+    end
+  else 
+    b = 1;
+    flash[:notice] = "Enter Full Customer Data";
+  end
+    if (b == 0 && params[:myid]["courseCode"] != "" && params[:myid]["instructor"] != "") 
+     var = params[:myid]["courseCode"]
+     var1 = params[:myid]["instructor"]
+     if (var == var1) 
+      Order.create({ "bookIDs" => var ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s }).id
+    else
+      flash[:notice] = "Book and Instructor do not match"
+  end
+    elsif (b == 0)
+      flash[:notice] = "Enter Book Title and Instructor";
+  end
+    redirect_to orders_path
     
 
     # respond_to do |format|
@@ -101,19 +111,12 @@ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-    cusname = params[:name]
-    cusroll = params[:rollno]
-    cusmob = params[:mobnum]
-    cust =Customer.create({"name" => cusname , "rollNum" => cusroll ,"mobileNum" => cusmob }) .id
-    if (params[:myid] != nil)
-     var = params[:myid]["courseCode"]
-    
-  end
-    getid = Order.create({ "bookIDs" => var ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s }).id
-    
-    @order = Order.find(getid)
-    end
 
+    @order = Order.find(params[:id])
+    end
+    def order_params
+      params.require(:order).permit(:bookIDs, :customerID, :status, :dateOrdered, :quantities, :rollNum)
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
 
 end
