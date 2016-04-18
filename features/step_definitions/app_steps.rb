@@ -50,6 +50,15 @@ Then /^I should have a book "([^"]*)"$/ do |title|
 
 end
 
+Then /^I should only see a book "([^"]*)"$/ do |title|
+   Book.find_by(bookTitle: title)
+
+end
+
+
+
+
+
 Then /^I delete request "([^"]*)"$/ do |req|
   @request = Request.find_by(author: req)
   assert @request.destroy
@@ -72,3 +81,5 @@ Then(/^I should see all of the purchases$/) do
   rows = page.all('#table tr').size - 1
   Sale.count() > 0
 end
+
+
