@@ -13,6 +13,16 @@ def returnB
   # end
 end
   
+def tracker
+  logger.debug(params)
+  @order = Order.find_by_id(params[:t_id].to_i)
+  if @order == nil
+    flash[:notice] = "Invalid Order ID"
+    redirect_to :home_index
+  else
+    render :show
+  end
+end
 
 def submit
   format.html { redirect_to books_url, notice: 'Order was successfully destroyed.' }

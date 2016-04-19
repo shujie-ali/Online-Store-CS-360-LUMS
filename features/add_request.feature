@@ -3,11 +3,8 @@ Feature: Add request
   I might want a book which is not currently available
   So I want to place a request
 
-Background: Admin ready 
-  Given administrator has logged in
-
-
 Scenario: Add request
+  Given I am on the homepage
 	Given I am on request
 	When I follow "New Request"
 	And I fill in "request[author]" with "Mary"

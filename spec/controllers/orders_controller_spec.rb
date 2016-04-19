@@ -31,6 +31,7 @@ describe OrdersController,type: :controller do
             post :create, @order_params
         end
      end
+    
     describe 'handling order information' do
         it 'should create a new order with customer and order information' do
             book=FactoryGirl.create(:book)
@@ -38,7 +39,19 @@ describe OrdersController,type: :controller do
             post :create, @order_params
             response.should redirect_to(orders_path)
         end
-        
     end
-         
+    
+    describe 'tracking a user' do
+        it 'should show the order information with a valid tracking number' do
+            order=FactoryGirl.create(:order)
+            # customer=FactoryGirl.create(:customer)
+            Order.should_receive(:find_by_id).with(order.id)
+            post :tracker, {:t_id=>order.id}
+        end
+        it 'should redirect to homepage with invalid tracking number' do
+            Order.should_receive(:find_by_id).with(-1)
+            post :tracker, {:t_id=>-1}
+            response.should redirect_to '/home'
+        end
+    end
 end

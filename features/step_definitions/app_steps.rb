@@ -2,17 +2,21 @@
 Given /administrator has signed up/ do
   steps %q{
   Given I am on the admin page
+  When I follow "Signup"
   Then I fill in "admin[first_name]" with "Admin"
   Then I fill in "admin[last_name]" with "Admin"
   Then I fill in "admin[email]" with "admin@onepoint.com"
   Then I fill in "admin[password]" with "admin"
-  Then I am on the dashboard
+  And I press "Create"
+  Then I should have a user with email "admin@onepoint.com"
 }
 
 end
 
 Given /administrator has logged in/ do
    steps %q{
+     Given the administrator has signed up
+     Given I am on the homepage
       Given I am on the admin page
       When I follow "Login"
       Then I fill in "Email" with "admin@onepoint.com"
@@ -20,6 +24,7 @@ Given /administrator has logged in/ do
       And I press "Log in"
       And I am on the dashboard
    }
+   
 
 end
 
@@ -41,7 +46,7 @@ Given /I have created a request/ do
 end
 
 Then /^I should have a user with email "([^"]*)"$/ do |email|
-  assert Admin.find_by(email: email)
+  admin=Admin.where(email: email)
 
 end
 
@@ -55,13 +60,9 @@ Then /^I should only see a book "([^"]*)"$/ do |title|
 
 end
 
-
-
-
-
 Then /^I delete request "([^"]*)"$/ do |req|
   @request = Request.find_by(author: req)
-  assert @request.destroy
+  @request.destroy
 end
 
 Then(/^I should see all of the sales$/) do
