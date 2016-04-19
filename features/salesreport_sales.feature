@@ -4,7 +4,7 @@ Feature: Admin can view Sales Report.
  I want to view my sales report
 
 Background: Making sure that admininstrator is logged in
-    Given administrator has logged in
+    Given administrator has signed up and logged in
 
 Scenario: Adding new sales
 	Given I am on sales report

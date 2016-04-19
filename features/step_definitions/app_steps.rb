@@ -1,5 +1,5 @@
 
-Given /administrator has signed up/ do
+Given /administrator has signed up and logged in/ do
   steps %q{
   Given I am on the admin page
   When I follow "Signup"
@@ -10,21 +10,6 @@ Given /administrator has signed up/ do
   And I press "Create"
   Then I should have a user with email "admin@onepoint.com"
 }
-
-end
-
-Given /administrator has logged in/ do
-   steps %q{
-     Given the administrator has signed up
-     Given I am on the homepage
-      Given I am on the admin page
-      When I follow "Login"
-      Then I fill in "Email" with "admin@onepoint.com"
-      Then I fill in "Password" with "admin"
-      And I press "Log in"
-      And I am on the dashboard
-   }
-   
 
 end
 
@@ -46,18 +31,26 @@ Given /I have created a request/ do
 end
 
 Then /^I should have a user with email "([^"]*)"$/ do |email|
-  admin=Admin.where(email: email)
-
+  admin=Admin.where(email: email).first
+  if admin==nil 
+    assert false
+  end
 end
 
 Then /^I should have a book "([^"]*)"$/ do |title|
-  assert Book.find_by(bookTitle: title)
+  book= Book.find_by(bookTitle: title)
+  if book==nil
+    assert false
+  end
 
 end
 
 Then /^I should only see a book "([^"]*)"$/ do |title|
    Book.find_by(bookTitle: title)
+end
 
+Then /^I should see a book "([^"]*)"$/ do |title|
+   assert Book.find_by(bookTitle: title)
 end
 
 Then /^I delete request "([^"]*)"$/ do |req|

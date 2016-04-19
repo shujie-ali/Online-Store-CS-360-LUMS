@@ -4,7 +4,7 @@ Feature:
 	I want to enter books 
 
 Background: Admin ready 
-  Given administrator has logged in
+  Given administrator has signed up and logged in
 
 Scenario: Add a new book purchased
 	Given I am on new book page

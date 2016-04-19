@@ -14,4 +14,5 @@ Scenario: make admin account
   Then I fill in "admin[email]" with "admin@onepoint.com"
   Then I fill in "admin[password]" with "admin"
   And I press "Create"
-  Then I should have a user with email "admin@onepoint.com"
+  Then I am on the admin page
+  And I should have a user with email "admin@onepoint.com"

@@ -4,7 +4,7 @@ Feature: Admin can view Puschase Report.
  I want to view purchase reports
 
 Background: Making sure that admininstrator is logged in
-    Given administrator has logged in
+    Given administrator has signed up and logged in
 
 Scenario: Adding new sales
 	Given I am on purchase report
@@ -16,7 +16,6 @@ Scenario: Adding new sales
 	And I fill in "sale[quantity]" with "2"
 	And I fill in "sale[discount]" with "0"
     Then I press "Create Sale"
-    #Then sale with id "1"
 
 Scenario: Listing all sales
     When I am on purchase report

@@ -4,7 +4,7 @@ Feature: I want to edit books thats i have entered inti the system
 	I want to enter books purchased from vendor 
 
 Background: Admin ready 
-  Given the administrator has logged in
+  Given the administrator has signed up and logged in
 
 Scenario: Add a new book purchased
 	Given I am on Purchase
