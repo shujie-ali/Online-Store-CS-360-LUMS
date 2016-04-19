@@ -13,22 +13,4 @@ describe BooksController,type: :controller do
   #     expect(response).to be_ok
   #   end
   # end
-  # describe 'index page' do
-  #   it 'should render index page' do
-  #     get :index, "index"
-  #     expect(response).to be_ok
-  #   end
-  # end
-  # describe 'index page' do
-  #   it 'should render index page' do
-  #     get :index, "index"
-  #     expect(response).to be_ok
-  #   end
-  # end
-  # describe 'index page' do
-  #   it 'should render index page' do
-  #     get :index, "index"
-  #     expect(response).to be_ok
-  #   end
-  # end
 end

@@ -43,17 +43,18 @@ end
   # POST /orders
   # POST /orders.json
   def create
-   
-    
+    logger.debug('PARAMSSSSSSSSSSSS')
+    logger.debug(params)
     cusname = params[:name]
-    cusroll = params[:rollno]
+    cusroll = params[:rollnum].to_i
     cusmob = params[:mobnum]
     b = 0;
     if (cusname != "" && cusroll != "" && cusmob != "")
-    if (Customer.find_by_rollNum(cusroll).nil?)
+      cust=Customer.find_by_rollNum(cusroll)
+    if cust==nil
       cust = Customer.create({"name" => cusname , "rollNum" => cusroll ,"mobileNum" => cusmob }) .id
     else 
-      cust = Customer.find_by_rollNum(cusroll)[:id]
+      cust = cust[:id]
     end
   else 
     b = 1;
@@ -63,7 +64,7 @@ end
      var = params[:myid]["courseCode"]
      var1 = params[:myid]["instructor"]
      if (var == var1) 
-      Order.create({ "bookIDs" => var ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s }).id
+      Order.create!({ "bookIDs" => var ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s })
     else
       flash[:notice] = "Book and Instructor do not match"
   end
@@ -71,17 +72,6 @@ end
       flash[:notice] = "Enter Book Title and Instructor";
   end
     redirect_to orders_path
-    
-
-    # respond_to do |format|
-    #   if @order.save
-    #     format.html { redirect_to @order, notice: 'Order was successfully created.' }
-    #     format.json { render :show, status: :created, location: @order }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @order.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /orders/1
