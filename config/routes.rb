@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  resources :users
   resources :requests
   get 'purchases/report' => 'purchases#report'
   resources :purchases
