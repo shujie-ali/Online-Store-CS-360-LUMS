@@ -4,7 +4,6 @@ require 'rails_helper'
 describe OrdersController,type: :controller do
     before :each do 
         @order_params={"name"=>"shahroze", "rollnum"=>16110203, "mobnum"=>"03214990028", "myid"=>{"courseCode"=>"1", "instructor"=>"1"}, "quantities"=>"1"}
-        # @order_params={:id=>0,:name => 'kamran', :rollnum => 16110203, :mobnum => '090078601', :myid=> {:courseCode => 'MECO 121', :instructor => "Daud"}, :quantities => 2}
         @fake_order= double('customer1', @order_params)
     end
     
@@ -44,7 +43,6 @@ describe OrdersController,type: :controller do
     describe 'tracking a user' do
         it 'should show the order information with a valid tracking number' do
             order=FactoryGirl.create(:order)
-            # customer=FactoryGirl.create(:customer)
             Order.should_receive(:find_by_id).with(order.id)
             post :tracker, {:t_id=>order.id}
         end
