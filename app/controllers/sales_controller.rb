@@ -37,12 +37,12 @@ end
   def create
    if  ((params[:myid]["courseCode"] == "" || params[:myid]["instructor"] == "") && params[:custid] == "") 
      flash[:notice] = "Enter Course Code and Instructor OR Customer ID"
-    redirect_to "https://iter4-ahmerlums.c9users.io/sales/new"
+    redirect_to new_sale_path
     return
   else
     if (params[:custid] != "" && !Customer.exists?(id: params[:custid]))
       flash[:notice] = "Enter Valid Customer ID"
-      redirect_to "https://iter4-ahmerlums.c9users.io/sales/new"
+    redirect_to new_sale_path
       return
     elsif (params[:custid] != "")
       Sale.create({"customerID" => params[:custid]})
@@ -51,7 +51,7 @@ end
   if (params[:myid]["courseCode"] != "")
     if (params[:myid]["courseCode"] != params[:myid]["instructor"])
       flash[:notice] = "Instructor and Course Does Not Match!"
-      redirect_to "https://iter4-ahmerlums.c9users.io/sales/new"
+    redirect_to new_sale_path
       return
     else 
       Sale.create({"bookID" => params[:myid]["courseCode"]})
