@@ -35,17 +35,30 @@ end
   # POST /sales
   # POST /sales.json
   def create
-    @sale = Sale.new(sale_params)
-
-    respond_to do |format|
-      if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
-        format.json { render :show, status: :created, location: @sale }
-      else
-        format.html { render :new }
-        format.json { render json: @sale.errors, status: :unprocessable_entity }
-      end
+   if  ((params[:myid]["courseCode"] == "" || params[:myid]["instructor"] == "") && params[:custid] == "") 
+     flash[:notice] = "Enter Course Code and Instructor OR Customer ID"
+    redirect_to "https://iter4-ahmerlums.c9users.io/sales/new"
+    return
+  else
+    if (params[:custid] != "" && !Customer.exists?(id: params[:custid]))
+      flash[:notice] = "Enter Valid Customer ID"
+      redirect_to "https://iter4-ahmerlums.c9users.io/sales/new"
+      return
+    elsif (params[:custid] != "")
+      Sale.create({"customerID" => params[:custid]})
     end
+  end
+  if (params[:myid]["courseCode"] != "")
+    if (params[:myid]["courseCode"] != params[:myid]["instructor"])
+      flash[:notice] = "Instructor and Course Does Not Match!"
+      redirect_to "https://iter4-ahmerlums.c9users.io/sales/new"
+      return
+    else 
+      Sale.create({"bookID" => params[:myid]["courseCode"]})
+    end
+  end
+   redirect_to sales_path
+   return
   end
 
   # PATCH/PUT /sales/1
