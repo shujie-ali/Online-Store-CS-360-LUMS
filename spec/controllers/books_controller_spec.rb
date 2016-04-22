@@ -20,10 +20,4 @@ describe BooksController,type: :controller do
       response.should render_template :index
     end
   end
-  describe 'new book page' do
-    it 'should render new book page' do
-      get :new
-      expect(response).to be_ok
-    end
-  end
 end

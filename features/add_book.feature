@@ -1,4 +1,4 @@
-Feature:
+Feature: adding books in the database
 	As a manager
 	So i can add books to maintain record and for the customers to see
 	I want to enter books 

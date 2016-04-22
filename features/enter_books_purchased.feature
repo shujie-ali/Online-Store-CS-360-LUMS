@@ -1,4 +1,4 @@
-Feature: I want to edit books thats i have entered inti the system
+Feature: I want to edit books thats i have entered in the system
 	As a manager
 	So i can update my inventory
 	I want to enter books purchased from vendor 

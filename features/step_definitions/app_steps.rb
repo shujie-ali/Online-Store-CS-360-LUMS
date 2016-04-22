@@ -10,8 +10,26 @@ Given /administrator has signed up and logged in/ do
   And I press "Create"
   Then I should have a user with email "admin@onepoint.com"
 }
-
 end
+
+Given /I have created a sale/ do
+  steps %q{
+    Given I am on the home page
+    And I follow "Admin"
+    Then I should see "Welcome to admin's page"
+    When I follow "Sales"
+    Then I should see "Sales"
+    When I follow "New"
+    Then I should see "New Sale"
+    And I fill in "sale[customerID]" with "1"
+  	And I fill in "sale[orderID]" with "2"
+  	And I fill in "sale[bookID]" with "1"
+  	And I fill in "sale[quantity]" with "2"
+  	And I fill in "sale[discount]" with "0"
+    Then I press "Create Sale"
+  }
+end
+
 
 Given /I have created a request/ do 
   steps %q{
@@ -19,7 +37,7 @@ Given /I have created a request/ do
   And I follow "Requests"
   Then I should see "Listing Requests"
   And I follow "New Request"
-  When I fill in "Author" with "fake author"
+  When I fill in "Author" with "JK Rowling"
   And I fill in "Edition" with "9th"
   And I fill in "Booktitle" with "Harry Potter"
   And I fill in "Instructor" with "Someone"
@@ -27,7 +45,6 @@ Given /I have created a request/ do
   And I press "Create Request"
   Then I should see "Request was successfully created."
   }
-
 end
 
 Then /^I should have a user with email "([^"]*)"$/ do |email|
@@ -76,4 +93,34 @@ Then(/^I should see all of the purchases$/) do
   Sale.count() > 0
 end
 
+Given /I have created a new book/ do
+  steps %q{
+    Given I am on new book page
+  	Then I fill in "book[courseTitle]" with "cs"
+  	Then I fill in "book[courseCode]" with "12"
+  	Then I fill in "book[instructor]" with "lums instructor"
+  	Then I fill in "book[school]" with "sse"
+  	Then I fill in "book[ourPrice]" with "300"
+  	Then I fill in "book[canotechPrice]" with "400"
+  	Then I fill in "book[numCopies]" with "1"
+  	Then I fill in "book[bookTitle]" with "CS360"
+  	Then I fill in "book[author]" with "new author"
+  	Then I fill in "book[edition]" with "2"
+  	Then I fill in "book[dept]" with "CS"
+  	Then I fill in "book[comment]" with "book"
+  	Then I press "Create Book"
+  	Then I should have a book "CS360"
+  }
+end
 
+Given /I have created a Purchase/ do
+  steps %q{
+    Given I am on Purchase
+  	Then I should see "Listing Purchases"
+  	When I follow "New Purchase"
+  	When I fill in "Bookid" with "12"
+  	And I fill in "Quantity" with "2"
+  	And I press "Create Purchase"
+  	Then I should see "Purchase was successfully created."
+  }
+end

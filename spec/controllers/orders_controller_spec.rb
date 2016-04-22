@@ -19,7 +19,7 @@ describe OrdersController,type: :controller do
             expect(response).to be_ok
         end
     end
-    describe 'handling customer information' do 
+    describe 'Creating customer from order information' do 
          it 'should create a new customer if information doesnt not exist in database' do
             Customer.should_receive(:find_by_rollNum).with(@fake_order.rollnum).and_return(nil)
             post :create, @order_params
@@ -31,7 +31,7 @@ describe OrdersController,type: :controller do
         end
      end
     
-    describe 'handling order information' do
+    describe 'Placing an order' do
         it 'should create a new order with customer and order information' do
             book=FactoryGirl.create(:book)
             Order.should_receive(:create!)
