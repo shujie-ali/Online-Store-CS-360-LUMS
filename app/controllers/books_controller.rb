@@ -29,12 +29,13 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render :show, status: :created, location: @book }
-      else
+      if not @book.save
         format.html { render :new }
         format.json { render json: @book.errors, status: :unprocessable_entity }
+        else
+          format.html { redirect_to @book, notice: 'Book was successfully created.' }
+          format.json { render :show, status: :created, location: @book }
+        
       end
     end
   end
