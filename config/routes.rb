@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get 'admin'=> 'sessions#new'
   post 'login' => 'sessions#create'
   post 'orders/create' => 'orders#create'
+  post 'sales/create' => 'sales#create'
+  post 'purchases/create' => 'purchases#create'
   delete 'logout' => 'sessions#destroy'
   resources :sessions
   

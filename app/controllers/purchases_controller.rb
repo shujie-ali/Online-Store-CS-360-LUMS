@@ -22,26 +22,29 @@ class PurchasesController < ApplicationController
   def new
     @purchase = Purchase.new
   end
-
+  def create
+   if  (params[:myid]["courseCode"] == "" || params[:myid]["instructor"] == "" || params[:quantity] == "") 
+     flash[:notice] = "Enter Course Code, Instructor and Quantity"
+     redirect_to new_purchase_path
+    return
+    elsif (params[:myid]["courseCode"] != params[:myid]["instructor"])
+      flash[:notice] = "Instructor and Course Does Not Match!"
+      redirect_to new_purchase_path
+      return
+    else 
+      Purchase.create({"bookID" => params[:myid]["courseCode"], "quantity" => params[:quantity]})
+   end
+   redirect_to purchases_path
+   return
+  end
+  
   # GET /purchases/1/edit
   def edit
   end
 
   # POST /purchases
   # POST /purchases.json
-  def create
-    @purchase = Purchase.new(purchase_params)
 
-    respond_to do |format|
-      if @purchase.save
-        format.html { redirect_to @purchase, notice: 'Purchase was successfully created.' }
-        format.json { render :show, status: :created, location: @purchase }
-      else
-        format.html { render :new }
-        format.json { render json: @purchase.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # PATCH/PUT /purchases/1
   # PATCH/PUT /purchases/1.json

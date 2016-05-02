@@ -4,6 +4,7 @@
             <li><%= current_admin.email %></li> 
             <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
         
+        <%= link_to "Create New Admin", 'signup' %><hr>
         <%= link_to 'Books', books_path %> <hr>
         <%= link_to 'Purchases', purchases_path %><hr>
         <%= link_to 'Orders', orders_path %><hr>
