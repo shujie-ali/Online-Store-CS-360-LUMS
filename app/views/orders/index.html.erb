@@ -16,7 +16,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:bookIDs) %></th>
+      <th><%= model_class.human_attribute_name(:courseTitle) %></th>
       <th><%= model_class.human_attribute_name(:customerID) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:dateOrdered) %></th>
@@ -29,7 +29,7 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= link_to order.id, order_path(order) %></td>
-        <td><%= order.bookIDs %></td>
+        <td><%= link_to Book.find_by_id(order.bookIDs).courseTitle, book_path(Book.find_by_id(order.bookIDs)) %></td>
         <td><%= order.customerID %></td>
         <td><%= order.status %></td>
         <td><%= order.dateOrdered %></td>
