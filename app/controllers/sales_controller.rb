@@ -34,18 +34,20 @@ end
 
   # POST /sales
   # POST /sales.json
+  
   def create
-   if  ((params[:myid]["courseCode"] == "" || params[:myid]["instructor"] == "") && params[:custid] == "") 
-     flash[:notice] = "Enter Course Code and Instructor OR Customer ID"
+   if  ((params[:myid]["courseCode"] == "" || params[:myid]["instructor"] == "") && params[:orderid] == "") 
+     flash[:notice] = "Enter Course Code and Instructor OR Order ID"
     redirect_to new_sale_path
     return
   else
-    if (params[:custid] != "" && !Customer.exists?(id: params[:custid]))
-      flash[:notice] = "Enter Valid Customer ID"
+    if (params[:orderid] != "" && !Order.exists?(id: params[:orderid]))
+      flash[:notice] = "Enter Valid Order ID"
     redirect_to new_sale_path
       return
-    elsif (params[:custid] != "")
-      Sale.create({"customerID" => params[:custid]})
+    elsif (params[:orderid] != "")
+      order = Order.find(params[:orderid])
+      Sale.create({"orderID" => order.id, "customerID" => order.customerID, "bookID" => order.bookIDs})
     end
   end
   if (params[:myid]["courseCode"] != "")
