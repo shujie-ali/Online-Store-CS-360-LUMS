@@ -34,18 +34,33 @@ end
 
   # POST /sales
   # POST /sales.json
+  
   def create
-    @sale = Sale.new(sale_params)
-
-    respond_to do |format|
-      if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
-        format.json { render :show, status: :created, location: @sale }
-      else
-        format.html { render :new }
-        format.json { render json: @sale.errors, status: :unprocessable_entity }
-      end
+   if  ((params[:myid]["courseCode"] == "" || params[:myid]["instructor"] == "") && params[:orderid] == "") 
+     flash[:notice] = "Enter Course Code and Instructor OR Order ID"
+    redirect_to new_sale_path
+    return
+  else
+    if (params[:orderid] != "" && !Order.exists?(id: params[:orderid]))
+      flash[:notice] = "Enter Valid Order ID"
+    redirect_to new_sale_path
+      return
+    elsif (params[:orderid] != "")
+      order = Order.find(params[:orderid])
+      Sale.create({"orderID" => order.id, "customerID" => order.customerID, "bookID" => order.bookIDs})
     end
+  end
+  if (params[:myid]["courseCode"] != "")
+    if (params[:myid]["courseCode"] != params[:myid]["instructor"])
+      flash[:notice] = "Instructor and Course Does Not Match!"
+    redirect_to new_sale_path
+      return
+    else 
+      Sale.create({"bookID" => params[:myid]["courseCode"]})
+    end
+  end
+   redirect_to sales_path
+   return
   end
 
   # PATCH/PUT /sales/1
