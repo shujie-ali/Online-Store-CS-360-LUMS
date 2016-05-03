@@ -1,23 +1,24 @@
 
-        <h2 class="section-heading text-center"> Welcome to admin's page</h2>
 
-            <li><%= current_admin.email %></li> 
-            <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
-                <div class="text-center col-lg-2">
-</div>
-        <div class="text-center col-lg-8">
-            <%= link_to "Create New Admin", 'signup', :class => 'btn btn-primary' %><hr>
-        <%= link_to 'Books', books_path, :class => 'btn btn-primary'  %> <hr>
-        <%= link_to 'Purchases', purchases_path, :class => 'btn btn-primary'  %><hr>
-        <%= link_to 'Orders', orders_path, :class => 'btn btn-primary'  %><hr>
-        <%= link_to 'Requests', requests_path, :class => 'btn btn-primary'  %><hr>
-        <%= link_to 'Sales', sales_path, :class => 'btn btn-primary'  %><hr>
-        <%= link_to 'Customers', customers_path, :class => 'btn btn-primary'  %><hr>
-            
-        </div>
+        <p><%= current_admin.email %></p> 
+        <p><%= link_to "Log out", logout_path, method: "delete" , :class => 'btn btn-primary'%></p> 
         
         <div class="text-center col-lg-2">
-</div>
+        </div>
+        <div class="text-center back col-lg-8">
+            
+            <h2 class="section-heading text-center white"> Admin's Dashboard</h2>
+            <%= link_to "Create New Admin", 'signup', :class => 'btn btn-primary' %><hr>
+            <%= link_to 'Books', books_path, :class => 'btn btn-primary'  %><hr>
+            <%= link_to 'Purchases', purchases_path, :class => 'btn btn-primary'  %><hr>
+            <%= link_to 'Orders', orders_path, :class => 'btn btn-primary'  %><hr>
+            <%= link_to 'Requests', requests_path, :class => 'btn btn-primary'  %><hr>
+            <%= link_to 'Sales', sales_path, :class => 'btn btn-primary'  %><hr>
+            <%= link_to 'Customers', customers_path, :class => 'btn btn-primary'  %><hr>
+                
+        </div>
+        <div class="text-center col-lg-2">
+        </div>
         
         
 
@@ -27,7 +28,10 @@
         background-color: #1abc9c !important;
         
     }
-    .text-center{
-        background-color:  white;
+    .back{
+        background-color: #5C97BF;
+    }
+    .white{
+        color: white;
     }
 </style>
