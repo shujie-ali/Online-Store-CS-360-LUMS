@@ -10,5 +10,5 @@ Scenario: View all the books
   Given I am on the home page
   And I follow "Books"
   Then I should see "Books"
-  And I should see "sse"
-  And I should see "new author"
+  And I should see "Amer Iqbal"
+  And I should see "Chemistry"

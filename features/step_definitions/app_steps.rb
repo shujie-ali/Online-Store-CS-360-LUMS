@@ -2,48 +2,40 @@
 Given /administrator has signed up and logged in/ do
   steps %q{
   Given I am on the admin page
-  When I follow "Signup"
-  Then I fill in "admin[first_name]" with "Admin"
-  Then I fill in "admin[last_name]" with "Admin"
-  Then I fill in "admin[email]" with "admin@onepoint.com"
-  Then I fill in "admin[password]" with "admin"
-  And I press "Create"
-  Then I should have a user with email "admin@onepoint.com"
+  Then I fill in "Email" with "admin@onepoint.com"
+  Then I fill in "Password" with "admin"
+  And I press "Log in"
+  Then I am on the dashboard
+  And I should see "Admin's Dashboard"
 }
 end
 
 Given /I have created a sale/ do
   steps %q{
-    Given I am on the home page
-    And I follow "Admin"
-    Then I should see "Welcome to admin's page"
+    Given I am on the dashboard
     When I follow "Sales"
-    Then I should see "Sales"
     When I follow "New"
     Then I should see "New Sale"
-    And I fill in "sale[customerID]" with "1"
-  	And I fill in "sale[orderID]" with "2"
-  	And I fill in "sale[bookID]" with "1"
-  	And I fill in "sale[quantity]" with "2"
-  	And I fill in "sale[discount]" with "0"
-    Then I press "Create Sale"
+    When I select "Phy-100" from "myid[courseCode]"
+    And I select "Amer Iqbal" from "myid[instructor]"
+    Then I press "Submit"
   }
 end
 
 
 Given /I have created a request/ do 
   steps %q{
-      Given I am on the home page
-  And I follow "Requests"
-  Then I should see "Listing Requests"
-  And I follow "New Request"
+  Given I am on the homepage
+  Then I follow "Requests"
+	Then I am on request
+	Then I follow "New"
+	Then I am on new request
   When I fill in "Author" with "JK Rowling"
   And I fill in "Edition" with "9th"
   And I fill in "Booktitle" with "Harry Potter"
   And I fill in "Instructor" with "Someone"
   And I fill in "Coursecode" with "Law 100"
   And I press "Create Request"
-  Then I should see "Request was successfully created."
   }
 end
 
@@ -116,11 +108,14 @@ end
 Given /I have created a Purchase/ do
   steps %q{
     Given I am on Purchase
-  	Then I should see "Listing Purchases"
-  	When I follow "New Purchase"
-  	When I fill in "Bookid" with "12"
-  	And I fill in "Quantity" with "2"
-  	And I press "Create Purchase"
-  	Then I should see "Purchase was successfully created."
+  	When I follow "New"
+  	Then I should see "New Purchase"
+    When I select "Phy-100" from "myid[courseCode]"
+    And I select "Amer Iqbal" from "myid[instructor]"
+    And I fill in "quantity" with "1"
+  	And I press "Submit"
+  	Then I am on Purchase
+  	And I should see "Quantity"
+  	And I should see "1"
   }
 end

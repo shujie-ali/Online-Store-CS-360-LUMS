@@ -3,7 +3,9 @@ Feature: Delete a request on a paticular book
  So that I do not make unsatisfiable commitments to customers
  I want to delete requests that i cannot fulfill
 
-
+Background: Admin ready 
+  Given administrator has signed up and logged in
+  
 Scenario: I want to delete a request
     Given I am on new request
     And I fill in "request[author]" with "Mary"

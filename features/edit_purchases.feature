@@ -9,7 +9,9 @@ Background: Making sure that admininstrator is logged in
 
 Scenario: Editing the given book
   When I follow "Edit"
-  And I fill in "Bookid" with "10"
-  And I fill in "Quantity" with "1"
+  And I fill in "Bookid" with "1"
+  And I fill in "Quantity" with "2"
   And I press "Update Purchase"
-  Then I should see "Purchase was successfully updated."
+  Then I should see "Purchase"
+  And I should see "Quantity"
+  And I should see "2"

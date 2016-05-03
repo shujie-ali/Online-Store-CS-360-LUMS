@@ -6,8 +6,9 @@ Feature: adding books in the database
 Background: Admin ready 
   Given administrator has signed up and logged in
 
-Scenario: Add a new book purchased
+Scenario: Add a new book to collection
 	Given I am on new book page
+	Then I should see "New Book"
 	Then I fill in "book[courseTitle]" with "cs"
 	Then I fill in "book[courseCode]" with "12"
 	Then I fill in "book[instructor]" with "lums instructor"

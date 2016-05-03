@@ -10,8 +10,6 @@ Background: Making sure that admininstrator is logged in
 Scenario: View a request 
   Given I am on the home page
   And I follow "Requests"
-  Then I should see "Listing Requests"
   And I should see "Harry Potter"
-  When I follow "Show"
-  Then I should see "JK Rowling"
+  And I should see "JK Rowling"
   

@@ -15,7 +15,7 @@ module NavigationHelpers
 
     when /^the admin page$/
       '/admin'
-    
+      
     when /^the dashboard$/
       '/admins'  
   
