@@ -1,13 +1,33 @@
 
-        <h1> Welcome to admin's page</h1>
+        <h2 class="section-heading text-center"> Welcome to admin's page</h2>
 
             <li><%= current_admin.email %></li> 
             <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
+                <div class="text-center col-lg-2">
+</div>
+        <div class="text-center col-lg-8">
+            <%= link_to "Create New Admin", 'signup', :class => 'btn btn-primary' %><hr>
+        <%= link_to 'Books', books_path, :class => 'btn btn-primary'  %> <hr>
+        <%= link_to 'Purchases', purchases_path, :class => 'btn btn-primary'  %><hr>
+        <%= link_to 'Orders', orders_path, :class => 'btn btn-primary'  %><hr>
+        <%= link_to 'Requests', requests_path, :class => 'btn btn-primary'  %><hr>
+        <%= link_to 'Sales', sales_path, :class => 'btn btn-primary'  %><hr>
+        <%= link_to 'Customers', customers_path, :class => 'btn btn-primary'  %><hr>
+            
+        </div>
         
-        <%= link_to "Create New Admin", 'signup' %><hr>
-        <%= link_to 'Books', books_path %> <hr>
-        <%= link_to 'Purchases', purchases_path %><hr>
-        <%= link_to 'Orders', orders_path %><hr>
-        <%= link_to 'Requests', requests_path %><hr>
-        <%= link_to 'Sales', sales_path %><hr>
-        <%= link_to 'Customers', customers_path %><hr>
+        <div class="text-center col-lg-2">
+</div>
+        
+        
+
+<style>
+    .btn-primary{
+        color: white !important;
+        background-color: #1abc9c !important;
+        
+    }
+    .text-center{
+        background-color:  white;
+    }
+</style>

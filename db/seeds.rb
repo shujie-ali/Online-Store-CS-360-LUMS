@@ -11,4 +11,4 @@ def digest(string)
   BCrypt::Password.create(string, cost: cost)
 end    
     
-Admin.create(first_name: 'admin', last_name: 'admin', email: 'admin@onepoint.com', password_digest: digest('shahroz') ) 
+Admin.create(first_name: 'admin', last_name: 'admin', email: 'admin@onepoint.com', password_digest: digest('admin') ) 
