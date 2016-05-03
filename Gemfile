@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
+# Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -30,24 +32,18 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'thin'
-
-
-group :development, :test do # <<<< :development, not devlopment
-  gem 'sqlite3'
-end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  # Use sqlite3 as the database for Active Record
-  gem 'simplecov', :require => false
-  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
   gem 'web-console', '~> 2.0'
   gem 'rspec-rails'
   gem 'rspec'
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
+  gem 'simplecov', :require => false
   gem 'byebug'
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions
@@ -55,9 +51,10 @@ group :development, :test do
   gem 'capybara' # lets Cucumber pretend to be a web browser
   gem 'launchy' # a useful de
 end
-gem 'pg' # for Heroku deployment
 
 gem 'factory_girl_rails'
-group :production do
-  gem 'rails_12factor'
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'pg'
 end
+
