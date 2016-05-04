@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe SalesController,type: :controller do
+    before :each do 
+        @current_admin=FactoryGirl.create(:admin)
+        session[:admin_id]=@current_admin.id
+    end
+    
   describe 'index page' do
     it 'should render index page' do
       get :index, "index"

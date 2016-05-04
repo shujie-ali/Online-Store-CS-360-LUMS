@@ -3,6 +3,8 @@ require 'test_helper'
 class BooksControllerTest < ActionController::TestCase
   setup do
     @book = books(:one)
+    @current_admin=FactoryGirl.create(:admin)
+    session[:admin_id]=@current_admin.id
   end
 
   test "should get index" do

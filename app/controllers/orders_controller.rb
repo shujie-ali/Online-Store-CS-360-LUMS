@@ -60,6 +60,7 @@ end
   # POST /orders
   # POST /orders.json
   def create
+    logger.debug(params)
     cusname = params[:name]
     cusroll = params[:rollnum].to_i
     cusmob = params[:mobnum]
