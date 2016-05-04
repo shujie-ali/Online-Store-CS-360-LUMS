@@ -2,10 +2,13 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
-
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:bookIDs) %>:</strong></dt>
-  <dd><%= @order.bookIDs %></dd>
+  <dt><strong>Tracking ID:</strong></dt>
+  <dd><%= @order.id %></dd>
+  <dt><strong> Course Code : </strong></dt>
+  <dd><%= Book.find(@order.bookIDs).courseCode %></dd>
+  <dt><strong> Instructor : </strong></dt>
+  <dd><%= Book.find(@order.bookIDs).instructor %></dd>
   <dt><strong><%= model_class.human_attribute_name(:customerID) %>:</strong></dt>
   <dd><%= @order.customerID %></dd>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>

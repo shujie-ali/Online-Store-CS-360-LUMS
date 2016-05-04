@@ -28,7 +28,7 @@ Given /I have created a request/ do
   Given I am on the homepage
   Then I follow "Requests"
 	Then I am on request
-	Then I follow "New"
+	When I follow "New"
 	Then I am on new request
   When I fill in "Author" with "JK Rowling"
   And I fill in "Edition" with "9th"

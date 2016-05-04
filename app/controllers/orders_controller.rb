@@ -2,7 +2,7 @@
 
   class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  # before_action :require_admin, only: [:index]
+  before_action :require_admin, only: [:index, :edit, :update, :destroy]
 
 def returnB 
   # @order = Order.find()
@@ -82,7 +82,9 @@ end
      var = params[:myid]["courseCode"]
      var1 = params[:myid]["instructor"]
      if (var == var1) 
-         Order.create!({ "bookIDs" => var ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s })
+         id = Order.create!({ "bookIDs" => var ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s })
+        redirect_to order_url(id)
+      return
      else
          flash[:notice] = "Book and Instructor do not match"
     end
@@ -90,10 +92,12 @@ end
       flash[:notice] = "Enter Book Title and Instructor";
   end
   else
-    Order.create!({ "bookIDs" => flash[:bid] ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s })
-
+   id =  Order.create!({ "bookIDs" => flash[:bid] ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s })
+  redirect_to order_url(id)
+  return
+  
   end
-    redirect_to orders_path
+    redirect_to orders_url
   end
 
   # PATCH/PUT /orders/1

@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
   
-  before_action :require_admin, only: [:index]
+  before_action :require_admin, only: [:index, :show, :new, :edit, :create, :update, :destroy]
   
   def index
   end
