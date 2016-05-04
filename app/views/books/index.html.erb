@@ -27,7 +27,7 @@
           <h3><%= book.courseTitle %></h3>
           <p><%= book.instructor %></p>
           <a href=<%= book_path(book) %> class="btn btn-primary">Preview</a>
-          <a href=<%= new_order_path %> class="btn btn-default">Purchase</a>
+          <a href=<%= new_order_path + "/" + book.id.to_s %> class="btn btn-default">Purchase</a>
       </div>
     </div>
     </div>

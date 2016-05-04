@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   
 
   resources :home
-  
+  get 'orders/new/:id' => 'orders#new'
   get 'signup'  => 'admins#new' 
   resources :admins
   get 'admin'=> 'sessions#new'
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   post 'sales/create' => 'sales#create'
   post 'purchases/create' => 'purchases#create'
   delete 'logout' => 'sessions#destroy'
+  get'logout' => 'sessions#destroy'
   resources :sessions
   
   post 'tracker' => 'orders#tracker'

@@ -1,7 +1,6 @@
 
 
-        <p><%= current_admin.email %></p> 
-        <p><%= link_to "Log out", logout_path, method: "delete" , :class => 'btn btn-primary'%></p> 
+       
         
         <div class="text-center col-lg-2">
         </div>
@@ -9,6 +8,7 @@
             
             <h2 class="section-heading text-center white"> Admin's Dashboard</h2>
             <%= link_to "Create New Admin", 'signup', :class => 'btn btn-primary' %><hr>
+            <%= link_to 'Add New Book', new_book_path, :class => 'btn btn-primary'  %><hr>
             <%= link_to 'Books', books_path, :class => 'btn btn-primary'  %><hr>
             <%= link_to 'Purchases', purchases_path, :class => 'btn btn-primary'  %><hr>
             <%= link_to 'Orders', orders_path, :class => 'btn btn-primary'  %><hr>

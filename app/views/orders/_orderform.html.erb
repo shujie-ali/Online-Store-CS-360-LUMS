@@ -1,4 +1,5 @@
 
+
   <div class="col-xs-5" style="margin-left: -1.5%;">
     <%= form_tag("/orders/create", method: "post") do %>
       <div class="form-group">
@@ -17,14 +18,23 @@
       </div>
       
       <div class="form-group">  
-        <%= label_tag :bookid, "Course Code" %>
+      <%= label_tag :bookid, "Course Code" %>
+      <% if request.original_url[request.original_url.length-1] == 'w'%>
         <%=  collection_select :myid,:courseCode, Book.all, :id, :courseCode, include_blank: true %>
-     
+    <% else %>
+     <%= Book.find(request.original_url.split('/')[-1].to_i).courseCode %>
+
+      <% end %>
       </div>
       
       <div class="form-group">  
         <%= label_tag :bookid, "Instructor" %>
+        <% if request.original_url[request.original_url.length-1] == 'w'%>
         <%=  collection_select :myid,:instructor, Book.all, :id, :instructor, include_blank: true %>
+            <% else %>
+     <%= Book.find(request.original_url.split('/')[-1].to_i).instructor %>
+
+      <% end %>
      
       </div>
       

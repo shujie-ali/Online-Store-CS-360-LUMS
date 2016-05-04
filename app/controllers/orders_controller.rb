@@ -42,7 +42,14 @@ end
 
   # GET /orders/new
   def new
+  if request.original_url[request.original_url.length-1] == 'w'
+    flash[:bid] = -1
     @order = Order.new
+  else
+    arr = request.original_url.split('/')
+    flash[:bid] = arr[arr.length-1].to_i
+     @order = Order.new 
+   end
    
   end
 
@@ -53,8 +60,6 @@ end
   # POST /orders
   # POST /orders.json
   def create
-    logger.debug('PARAMSSSSSSSSSSSS')
-    logger.debug(params)
     cusname = params[:name]
     cusroll = params[:rollnum].to_i
     cusmob = params[:mobnum]
@@ -70,16 +75,23 @@ end
     b = 1;
     flash[:notice] = "Enter Full Customer Data";
   end
+  
+  if (b == 0 && flash[:bid] == -1)
     if (b == 0 && params[:myid]["courseCode"] != "" && params[:myid]["instructor"] != "") 
+ 
      var = params[:myid]["courseCode"]
      var1 = params[:myid]["instructor"]
      if (var == var1) 
-      Order.create!({ "bookIDs" => var ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s })
-    else
-      flash[:notice] = "Book and Instructor do not match"
-  end
+         Order.create!({ "bookIDs" => var ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s })
+     else
+         flash[:notice] = "Book and Instructor do not match"
+    end
     elsif (b == 0)
       flash[:notice] = "Enter Book Title and Instructor";
+  end
+  else
+    Order.create!({ "bookIDs" => flash[:bid] ,"customerID" => cust , "status" => "Pending","quantities" => params[:quantities],"dateOrdered" => Date.today.to_s })
+
   end
     redirect_to orders_path
   end

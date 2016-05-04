@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -34,24 +35,20 @@
 								<li><%= 
 								# link_to 'Sales', sales_path 
 								%></li>
-								<li><%= link_to 'Customers', customers_path %></li>
 								<li><%= 
 								# link_to 'Admin', admins_path 
 								%></li>
 								<% if current_admin %> 
-							    <!--<li><%= current_admin.email %></li> -->
-							    <li><%= link_to "Admin Dashboard", admins_path, method: "get" %></li> 
+
+    							<li><%= link_to "Dashboard", admins_path, method: "get" %></li>
+   								 <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+   								 
+							    <!--<li><%= link_to "Admin Dashboard", admins_path, method: "get" %></li> -->
+							    <!--<p>  <%= current_admin.first_name %> <%= link_to "Log out", logout_path, method: "delete" , :class => 'btn btn-primary'%></p> -->
+							   <% else %>
+							   	<li><%= link_to 'SIGN IN', customers_path %></li>
 								<% end %>
             				</ul>
-						
-						<!--<form class="navbar-form navbar-left" role="search">-->
-						<!--	<div class="form-group">-->
-						<!--		<input type="text" class="form-control" />-->
-						<!--	</div> -->
-						<!--	<button type="submit" class="btn btn-default">-->
-						<!--		Search-->
-						<!--	</button>-->
-						<!--</form>-->
 						<%= form_tag books_path, :method => 'get', :class => 'navbar-form navbar-left' do %>
 						  <p>
 						    <%= text_field_tag :search, params[:search] %>
